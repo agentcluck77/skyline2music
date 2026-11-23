@@ -1,0 +1,18 @@
+services:
+  jupyter:
+    image: quay.io/jupyter/pytorch-notebook:cuda12-latest
+    ports:
+      - "127.0.0.1:8888:8888"
+    volumes:
+      - .:/home/jovyan/work
+    environment:
+      - HF_TOKEN=${HF_TOKEN:-}
+      - HF_HOME=/home/jovyan/work/hf_cache
+    shm_size: 8gb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

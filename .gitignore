@@ -1,0 +1,6 @@
+hf_cache/
+data/
+.ipynb_checkpoints/
+__pycache__/
+.env
+outputs/
